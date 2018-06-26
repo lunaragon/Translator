@@ -1,0 +1,11 @@
+{
+    "supported_languages":[
+        "zh", "en", "ru",
+        "ja", "ko", "ug", "jp"
+    ],
+    "supported_competitors":[
+        "google", "baidu", "xiaoniu",
+        "tencent", "youdao", "sougou",
+        "360", "biying"
+    ]
+}
