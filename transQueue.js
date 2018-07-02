@@ -2,6 +2,7 @@ const async = require('async')
 const Baidu = require('./competitors/baidu')
 const Tencent = require('./competitors/tencent')
 const XiaoNiu = require('./competitors/xiaoniu')
+// const XiaoNiu = require('./competitors/xiaoniu')
 const Youdao = require('./competitors/cheat_youdao')
 const Google = require('./competitors/cheat_google')
 // const Google = require('./competitors/google')
@@ -30,6 +31,8 @@ async function TransWorker(task){
             trans_text = await Biying.GetTranslation(task.src_lan, task.trg_lan, task.sentence)
         }else if (task.product == 'youdao'){
             trans_text = await Youdao.GetTranslation(task.src_lan, task.trg_lan, task.sentence)
+        }else if (task.product == 'xiaoniu'){
+            trans_text = await XiaoNiu.GetTranslation(task.src_lan, task.trg_lan, task.sentence)
         }
         
         const write_str = `${task.line_number}\t${task.sentence}\t${trans_text}\t${task.input_file_name}\n`
@@ -39,7 +42,7 @@ async function TransWorker(task){
             flag:'a+'
         })
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         if (--task.retries != 0){
             TranslateQueue.push(task)
         }else{

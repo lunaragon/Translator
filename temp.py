@@ -24,4 +24,4 @@ for ch_file in input_dir.iterdir():
             ))
         except Exception as ex:
             print(ex)
-        
+
